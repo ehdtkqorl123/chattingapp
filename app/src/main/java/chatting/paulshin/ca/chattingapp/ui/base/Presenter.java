@@ -6,5 +6,5 @@ package chatting.paulshin.ca.chattingapp.ui.base;
 
 public interface Presenter<V extends MvpView> {
 	void attachView(V mvpView);
-	void detatchView();
+	void detachView();
 }

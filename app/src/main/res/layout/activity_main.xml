@@ -8,6 +8,18 @@
               android:orientation="vertical"
               tools:context="chatting.paulshin.ca.chattingapp.ui.main.MainActivity">
 
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:gravity="center"
+              android:padding="@dimen/padding_small"
+              android:text="@string/main_title"
+              android:textAllCaps="true"
+              android:textStyle="bold"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/background_grey"/>
+
     <FrameLayout android:layout_width="match_parent"
                  android:layout_height="0dp"
                  android:layout_weight="1">
@@ -52,8 +64,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/spacing_xsmall"
-            android:src="@drawable/ic_send"
             android:onClick="sendMessage"
+            android:src="@drawable/ic_send"
             app:elevation="@dimen/z_card"
             app:fabSize="mini"/>
 

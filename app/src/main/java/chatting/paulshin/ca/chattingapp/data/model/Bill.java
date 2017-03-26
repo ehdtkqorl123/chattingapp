@@ -1,18 +1,21 @@
 package chatting.paulshin.ca.chattingapp.data.model;
 
+import com.orm.SugarRecord;
+
 /**
- * Created by paulshin on 2017-03-25.
+ * Created by paulshin on 2017-03-26.
  */
 
-public class Bill extends Message {
+public class Bill extends SugarRecord {
 	private String accountNo;
 	private double productPrice;
 	private double fees;
 	private String dueDate;
 	private double totalDue;
 
-	public Bill(int id, String text, long timestamp, String accountNo, double productPrice, double fees, String dueDate, double totalDue) {
-		super(id, text, timestamp, false);
+	public Bill() {}
+
+	public Bill(String accountNo, double productPrice, double fees, String dueDate, double totalDue) {
 		this.accountNo = accountNo;
 		this.productPrice = productPrice;
 		this.fees = fees;
