@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">ChattingApp</string>
+
+    <string name="main_title">CHAT WITH US</string>
+    <string name="bill_message">Here is your current statement:</string>
 </resources>
