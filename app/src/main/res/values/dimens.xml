@@ -15,7 +15,7 @@
     <dimen name="bubble_radius">12dp</dimen>
     <dimen name="bubble_big_right_or_left_margin">24dp</dimen>
     <dimen name="bubble_small_right_or_left_margin">12dp</dimen>
-    <dimen name="bubble_top_bottom_margin">6dp</dimen>
+    <dimen name="bubble_top_bottom_margin">4dp</dimen>
 
     <dimen name="z_card">4dp</dimen>
 </resources>
