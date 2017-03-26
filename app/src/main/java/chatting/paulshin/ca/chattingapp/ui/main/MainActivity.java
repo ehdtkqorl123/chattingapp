@@ -41,7 +41,10 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 
 		mChattingAdapter = new ChattingAdapter(this);
 		mRecyclerView.setAdapter(mChattingAdapter);
-		mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+		linearLayoutManager.setReverseLayout(true);
+		mRecyclerView.setLayoutManager(linearLayoutManager);
 
 		DatabaseHelper databaseHelper = new DatabaseHelper();
 		DataManager dataManager = new DataManager(databaseHelper);
