@@ -48,8 +48,12 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		linearLayoutManager.setReverseLayout(true);
 		mRecyclerView.setLayoutManager(linearLayoutManager);
 
+		// Use MVP pattern for architecture.
+		// We could use Dagger for dependency injection but for simplicity we just create Presenter object here
 		mMainPresenter = new MainPresenter();
 		mMainPresenter.attachView(this);
+
+		// Load chat history from db if available
 		mMainPresenter.loadMessages();
 	}
 
@@ -59,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		super.onDestroy();
 	}
 
+	/**
+	 * Send non-empty text input to presenter
+	 * @param view
+	 */
 	@OnClick(R.id.send)
 	public void sendMessage(View view) {
 		String text = mMessageView.getText().toString().trim();
@@ -76,9 +84,12 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		mEmptyTextView.setVisibility(View.GONE);
 	}
 
+	/**
+	 * Show a delayed response to mimic real life chat delays
+	 * @param message
+	 */
 	@Override
 	public void showResponseWithDelay(final Message message) {
-		// Show a delayed response to be realistic..
 		mRecyclerView.postDelayed(new Runnable() {
 			@Override
 			public void run() {
@@ -90,6 +101,10 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		}, RESPONSE_DELAY);
 	}
 
+	/**
+	 * Show multiple messages loaded from db
+	 * @param messages
+	 */
 	@Override
 	public void showMessages(List<Message> messages) {
 		mChattingAdapter.setMessages(messages);
@@ -97,12 +112,18 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		mEmptyTextView.setVisibility(View.GONE);
 	}
 
+	/**
+	 * Show empty message if there is no chat history
+	 */
 	@Override
 	public void showEmptyMessages() {
 		mRecyclerView.setVisibility(View.GONE);
 		mEmptyTextView.setVisibility(View.VISIBLE);
 	}
 
+	/**
+	 * Show an error message
+	 */
 	@Override
 	public void showError() {
 		Toast.makeText(this, R.string.error_message, Toast.LENGTH_SHORT).show();
