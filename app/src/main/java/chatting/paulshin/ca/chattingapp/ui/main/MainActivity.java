@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		mMainPresenter.loadMessages();
 	}
 
+	@Override
+	protected void onDestroy() {
+		mMainPresenter.detachView();
+		super.onDestroy();
+	}
+
 	@OnClick(R.id.send)
 	public void sendMessage(View view) {
 		String text = mMessageView.getText().toString().trim();
