@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 	}
 
 	@Override
-	public void showMessageWithDelay(final Message message) {
+	public void showResponseWithDelay(final Message message) {
 		mRecyclerView.postDelayed(new Runnable() {
 			@Override
 			public void run() {
