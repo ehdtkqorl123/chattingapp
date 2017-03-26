@@ -7,23 +7,25 @@ import com.orm.SugarRecord;
  */
 
 public class Message extends SugarRecord {
-	private int messageId;
+	private String messageId;
 	private String text;
-	private long timestamp;
 	private boolean isMe;
+	private long billId;
 
-	public Message(int messageId, String text, long timestamp, boolean isMe) {
+	public Message() {}
+
+	public Message(String messageId, String text, boolean isMe, long billId) {
 		this.messageId = messageId;
 		this.text = text;
-		this.timestamp = timestamp;
 		this.isMe = isMe;
+		this.billId = billId;
 	}
 
-	public int getMessageId() {
+	public String getMessageId() {
 		return messageId;
 	}
 
-	public void setMessageId(int messageId) {
+	public void setMessageId(String messageId) {
 		this.messageId = messageId;
 	}
 
@@ -35,19 +37,19 @@ public class Message extends SugarRecord {
 		this.text = text;
 	}
 
-	public long getTimestamp() {
-		return timestamp;
-	}
-
-	public void setTimestamp(long timestamp) {
-		this.timestamp = timestamp;
-	}
-
 	public boolean isMe() {
 		return isMe;
 	}
 
 	public void setMe(boolean me) {
 		isMe = me;
+	}
+
+	public long getBillId() {
+		return billId;
+	}
+
+	public void setBillId(long billId) {
+		this.billId = billId;
 	}
 }

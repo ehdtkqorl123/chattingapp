@@ -1,7 +1,6 @@
 package chatting.paulshin.ca.chattingapp.ui.main;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,13 +16,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import chatting.paulshin.ca.chattingapp.R;
-import chatting.paulshin.ca.chattingapp.data.DataManager;
-import chatting.paulshin.ca.chattingapp.data.local.DatabaseHelper;
 import chatting.paulshin.ca.chattingapp.data.model.Message;
 
 public class MainActivity extends AppCompatActivity implements MainMvpView {
 
-	private static final int RESPONSE_DELAY = 1500;
+	private static final int RESPONSE_DELAY = 1000;
 
 	private ChattingAdapter mChattingAdapter;
 	private MainPresenter mMainPresenter;
@@ -34,8 +31,6 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 	public TextView mEmptyTextView;
 	@BindView(R.id.message)
 	public EditText mMessageView;
-	@BindView(R.id.send)
-	public FloatingActionButton mSendView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,10 +45,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		linearLayoutManager.setReverseLayout(true);
 		mRecyclerView.setLayoutManager(linearLayoutManager);
 
-		DatabaseHelper databaseHelper = new DatabaseHelper();
-		DataManager dataManager = new DataManager(databaseHelper);
-		mMainPresenter = new MainPresenter(dataManager);
-
+		mMainPresenter = new MainPresenter();
 		mMainPresenter.attachView(this);
 		mMainPresenter.loadMessages();
 	}
@@ -77,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 
 	@Override
 	public void showResponseWithDelay(final Message message) {
+		// Show a delayed response to be realistic..
 		mRecyclerView.postDelayed(new Runnable() {
 			@Override
 			public void run() {

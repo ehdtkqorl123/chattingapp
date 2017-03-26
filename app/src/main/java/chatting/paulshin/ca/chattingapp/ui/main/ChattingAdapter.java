@@ -70,7 +70,7 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 				bindMessage(getItem(position), (MessageHolder) holder);
 				break;
 			case TYPE_BILL:
-				bindBill((Bill)getItem(position), (BillHolder) holder);
+				bindBill(getItem(position), (BillHolder) holder);
 				break;
 		}
 	}
@@ -82,15 +82,18 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 		holder.textView.setText(message.getText());
 	}
 
-	private void bindBill(Bill bill, BillHolder holder) {
+	private void bindBill(Message Message, BillHolder holder) {
 		setViewMargin(holder.messageView, false);
+		Bill bill = Bill.findById(Bill.class, Message.getBillId());
 
-		holder.textView.setText(context.getString(R.string.bill_message));
-		holder.accountNumberView.setText(bill.getAccountNo());
-		holder.productPriceView.setText(String.valueOf(bill.getProductPrice()));
-		holder.feesView.setText(String.valueOf(bill.getFees()));
-		holder.dueDateView.setText(bill.getDueDate());
-		holder.totalDueView.setText(String.valueOf(bill.getTotalDue()));
+		if (bill != null) {
+			holder.textView.setText(context.getString(R.string.bill_message));
+			holder.accountNumberView.setText(bill.getAccountNo());
+			holder.productPriceView.setText(String.valueOf(bill.getProductPrice()));
+			holder.feesView.setText(String.valueOf(bill.getFees()));
+			holder.dueDateView.setText(bill.getDueDate());
+			holder.totalDueView.setText(String.valueOf(bill.getTotalDue()));
+		}
 	}
 
 	private void setViewMargin(View view, boolean isMe) {
@@ -109,7 +112,7 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 	@Override
 	public int getItemViewType(int position) {
 		Message message = getItem(position);
-		if (message instanceof Bill) {
+		if (message.getBillId() != -1) {
 			return TYPE_BILL;
 		} else {
 			return TYPE_MESSAGE;
