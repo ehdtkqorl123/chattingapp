@@ -53,6 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/spacing_xsmall"
             android:src="@drawable/ic_send"
+            android:onClick="sendMessage"
             app:elevation="@dimen/z_card"
             app:fabSize="mini"/>
 

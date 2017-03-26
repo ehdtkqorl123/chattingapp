@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -38,6 +39,14 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 	public void setMessages(List<Message> messages) {
 		this.messages = messages;
 		notifyDataSetChanged();
+	}
+
+	public void addMessage(Message message) {
+		if (messages == null) {
+			messages = new ArrayList<>();
+		}
+		messages.add(message);
+		notifyItemInserted(0); // Since index is reversed, the inserted position is 0
 	}
 
 	@Override
@@ -108,7 +117,8 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 	}
 
 	private Message getItem(int position) {
-		return messages.get(position);
+		int reversedPosition = messages.size() - 1 - position;
+		return messages.get(reversedPosition);
 	}
 
 	@Override

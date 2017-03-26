@@ -1,5 +1,6 @@
 package chatting.paulshin.ca.chattingapp.ui.main;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import chatting.paulshin.ca.chattingapp.data.DataManager;
@@ -20,15 +21,17 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
 	}
 
 	public void loadMessages() {
-		getMvpView().showMessages(Arrays.asList(
-				new Message(0, "ttestest", 100, true),
-				new Message(1, "gggdsagsafasdf", 101, false),
-				new Bill(2, "foozzz", 102, "323352 325234 32523 32", 32.15, 165.52, "02/26/16", 400.33)
-		));
+		getMvpView().showMessages(new ArrayList(Arrays.asList(
+				new Message(0, "1ttestest", 100, true),
+				new Message(1, "2gggdsagsafasdf", 101, false),
+				new Bill(2, "3foozzz", 102, "323352 325234 32523 32", 32.15, 165.52, "02/26/16", 400.33)
+		)));
 	}
 
-	public void sendMessage(Message message) {
+	public void sendMessage(String text) {
 		//TODO save
+		Message message = new Message(0, text, 123, true);
+
 		getMvpView().showMessage(message);
 	}
 }
