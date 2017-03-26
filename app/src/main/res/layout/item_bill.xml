@@ -1,14 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:id="@+id/message"
+              xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="6dp"
+              android:layout_marginLeft="12dp"
+              android:layout_marginRight="12dp"
+              android:layout_marginTop="6dp"
               android:orientation="vertical">
 
     <TextView android:id="@+id/text"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content"/>
+              android:layout_height="wrap_content"
+              android:background="@drawable/message_bubble_other"
+              android:text="@string/bill_message"/>
 
-    <TextView android:id="@+id/text2"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/bill_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/bubble_bill_margin"
+        android:background="@drawable/message_bubble_bill_detail"
+        android:orientation="vertical"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:padding="@dimen/padding_xxsmall">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                      android:layout_weight="1" android:text="@string/account_number"
+                      android:textAllCaps="true"/>
+            <TextView android:id="@+id/account_number_val" android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="@dimen/spacing_normal"
+                      android:layout_weight="1" tools:text="1423 363 3136 464"/>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="@dimen/divider_height"
+              android:background="@color/background_light_grey"
+              android:padding="@dimen/padding_xxsmall"/>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:padding="@dimen/padding_xxsmall">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:text="@string/product_price" android:textAllCaps="true"/>
+            <TextView android:id="@+id/product_price_val" android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="@dimen/spacing_normal"
+                      android:layout_weight="1" tools:text="60.85"/>
+        </LinearLayout>
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:padding="@dimen/padding_xxsmall">
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:text="@string/fees" android:textAllCaps="true"/>
+            <TextView android:id="@+id/fees_val" android:layout_width="0dp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="@dimen/spacing_normal"
+                      android:layout_weight="1" tools:text="8.40"/>
+        </LinearLayout>
+
+        <View android:layout_width="match_parent" android:layout_height="@dimen/divider_height"
+              android:background="@color/background_light_grey"
+              android:padding="@dimen/padding_xxsmall"/>
+
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:padding="@dimen/padding_xxsmall">
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="@string/due_date" android:textAllCaps="true"/>
+                <TextView android:id="@+id/due_date_val" android:layout_width="wrap_content"
+                          android:layout_height="wrap_content" tools:text="02/26/16"/>
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_alignParentEnd="true"
+                          android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:text="@string/total_due" android:textAllCaps="true"/>
+                <TextView android:id="@+id/total_due_val" android:layout_width="wrap_content"
+                          android:layout_height="wrap_content" tools:text="$135.20"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+    </LinearLayout>
 </LinearLayout>

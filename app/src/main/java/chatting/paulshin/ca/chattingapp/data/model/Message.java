@@ -5,14 +5,16 @@ package chatting.paulshin.ca.chattingapp.data.model;
  */
 
 public class Message {
-	public int id;
-	public String text;
-	public long timestamp;
+	private int id;
+	private String text;
+	private long timestamp;
+	private boolean isMe;
 
-	public Message(int id, String text, long timestamp) {
+	public Message(int id, String text, long timestamp, boolean isMe) {
 		this.id = id;
 		this.text = text;
 		this.timestamp = timestamp;
+		this.isMe = isMe;
 	}
 
 	public int getId() {
@@ -37,5 +39,13 @@ public class Message {
 
 	public void setTimestamp(long timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public boolean isMe() {
+		return isMe;
+	}
+
+	public void setMe(boolean me) {
+		isMe = me;
 	}
 }

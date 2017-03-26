@@ -5,11 +5,17 @@
 
     <dimen name="spacing_xsmall">8dp</dimen>
     <dimen name="spacing_normal">8dp</dimen>
+    <dimen name="padding_xxsmall">4dp</dimen>
     <dimen name="padding_xsmall">8dp</dimen>
     <dimen name="padding_small">10dp</dimen>
     <dimen name="padding_normal">16dp</dimen>
 
     <dimen name="divider_height">0.5dp</dimen>
+    <dimen name="bubble_bill_margin">2dp</dimen>
+    <dimen name="bubble_radius">12dp</dimen>
+    <dimen name="bubble_big_right_or_left_margin">24dp</dimen>
+    <dimen name="bubble_small_right_or_left_margin">12dp</dimen>
+    <dimen name="bubble_top_bottom_margin">6dp</dimen>
 
     <dimen name="z_card">4dp</dimen>
 </resources>

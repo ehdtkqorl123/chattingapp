@@ -4,9 +4,13 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="background_light">#fafafa</color> <!-- grey 50 -->
-    <color name="background_lightish">#e0e0e0</color> <!-- grey 300 -->
-    <color name="background_grey">#996e6e6e</color>
+    <color name="background_light">#fafafa</color>
+    <color name="background_lightish">#e0e0e0</color>
+    <color name="background_light_grey">#99b4b4b4</color>
+    <color name="background_grey">#99969696</color>
     <color name="background_dark">#ff333333</color>
     <color name="background_super_dark">#ff292929</color>
+
+    <color name="bubble_me_bg">#ececec</color>
+    <color name="bubble_other_border_bg">@color/background_grey</color>
 </resources>

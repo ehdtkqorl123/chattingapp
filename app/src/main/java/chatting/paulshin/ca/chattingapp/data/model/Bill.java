@@ -12,7 +12,7 @@ public class Bill extends Message {
 	private double totalDue;
 
 	public Bill(int id, String text, long timestamp, String accountNo, double productPrice, double fees, String dueDate, double totalDue) {
-		super(id, text, timestamp);
+		super(id, text, timestamp, false);
 		this.accountNo = accountNo;
 		this.productPrice = productPrice;
 		this.fees = fees;

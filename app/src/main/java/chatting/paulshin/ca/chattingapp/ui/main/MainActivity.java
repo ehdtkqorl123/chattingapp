@@ -5,7 +5,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 
 	@BindView(R.id.recycler_view)
 	public RecyclerView mRecyclerView;
+	@BindView(R.id.empty_text)
+	public TextView mEmptyTextView;
 	@BindView(R.id.message)
 	public EditText mMessageView;
 	@BindView(R.id.send)
@@ -41,6 +46,9 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		DatabaseHelper databaseHelper = new DatabaseHelper();
 		DataManager dataManager = new DataManager(databaseHelper);
 		mMainPresenter = new MainPresenter(dataManager);
+
+		mMainPresenter.attachView(this);
+		mMainPresenter.loadMessages();
 	}
 
 	@Override
@@ -50,16 +58,19 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 
 	@Override
 	public void showMessages(List<Message> messages) {
-
+		mChattingAdapter.setMessages(messages);
+		mRecyclerView.setVisibility(View.VISIBLE);
+		mEmptyTextView.setVisibility(View.GONE);
 	}
 
 	@Override
 	public void showEmptyMessages() {
-
+		mRecyclerView.setVisibility(View.GONE);
+		mEmptyTextView.setVisibility(View.VISIBLE);
 	}
 
 	@Override
 	public void showError() {
-
+		Toast.makeText(this, R.string.error_message, Toast.LENGTH_SHORT).show();
 	}
 }

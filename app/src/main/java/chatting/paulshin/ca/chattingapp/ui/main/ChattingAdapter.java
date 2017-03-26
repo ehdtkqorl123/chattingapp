@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -34,6 +35,11 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 		this.layoutInflater = LayoutInflater.from(context);
 	}
 
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
+		notifyDataSetChanged();
+	}
+
 	@Override
 	public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 		switch (viewType) {
@@ -61,12 +67,34 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 	}
 
 	private void bindMessage(Message message, MessageHolder holder) {
-		holder.textView.setText(message.text);
+		setViewMargin(holder.messageView, message.isMe());
+
+		holder.textView.setBackgroundResource(message.isMe() ? R.drawable.message_bubble_me : R.drawable.message_bubble_other);
+		holder.textView.setText(message.getText());
 	}
 
 	private void bindBill(Bill bill, BillHolder holder) {
+		setViewMargin(holder.messageView, false);
+
 		holder.textView.setText(context.getString(R.string.bill_message));
-		holder.text2View.setText(bill.text);
+		holder.accountNumberView.setText(bill.getAccountNo());
+		holder.productPriceView.setText(String.valueOf(bill.getProductPrice()));
+		holder.feesView.setText(String.valueOf(bill.getFees()));
+		holder.dueDateView.setText(bill.getDueDate());
+		holder.totalDueView.setText(String.valueOf(bill.getTotalDue()));
+	}
+
+	private void setViewMargin(View view, boolean isMe) {
+		int bubbleBigRightOrLeftMargin = context.getResources().getDimensionPixelSize(R.dimen.bubble_big_right_or_left_margin);
+		int bubbleSmallRightOrLeftMargin = context.getResources().getDimensionPixelSize(R.dimen.bubble_small_right_or_left_margin);
+		int bubbleTopBottomMargin = context.getResources().getDimensionPixelSize(R.dimen.bubble_top_bottom_margin);
+
+		int leftMargin = isMe ? bubbleBigRightOrLeftMargin : bubbleSmallRightOrLeftMargin;
+		int rightMargin = isMe ? bubbleSmallRightOrLeftMargin : bubbleBigRightOrLeftMargin;
+
+		RecyclerView.LayoutParams params = (RecyclerView.LayoutParams)view.getLayoutParams();
+		params.setMargins(leftMargin, bubbleTopBottomMargin, rightMargin, bubbleTopBottomMargin);
+		view.setLayoutParams(params);
 	}
 
 	@Override
@@ -85,11 +113,13 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 	@Override
 	public int getItemCount() {
-		return 0;
+		return messages.size();
 	}
 
 	static class MessageHolder extends RecyclerView.ViewHolder {
 
+		@BindView(R.id.message)
+		LinearLayout messageView;
 		@BindView(R.id.text)
 		TextView textView;
 
@@ -103,8 +133,18 @@ public class ChattingAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
 		@BindView(R.id.text)
 		TextView textView;
-		@BindView(R.id.text2)
-		TextView text2View;
+		@BindView(R.id.message)
+		LinearLayout messageView;
+		@BindView(R.id.account_number_val)
+		TextView accountNumberView;
+		@BindView(R.id.product_price_val)
+		TextView productPriceView;
+		@BindView(R.id.fees_val)
+		TextView feesView;
+		@BindView(R.id.due_date_val)
+		TextView dueDateView;
+		@BindView(R.id.total_due_val)
+		TextView totalDueView;
 
 		BillHolder(View itemView) {
 			super(itemView);
