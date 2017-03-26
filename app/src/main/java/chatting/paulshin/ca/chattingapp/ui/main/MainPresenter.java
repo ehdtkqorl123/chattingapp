@@ -14,6 +14,8 @@ import chatting.paulshin.ca.chattingapp.ui.base.BasePresenter;
 
 public class MainPresenter extends BasePresenter<MainMvpView> {
 
+	private static final String FILTER_BILL = "bill";
+
 	private final DataManager mDataManager;
 
 	public MainPresenter(DataManager dataManager) {
@@ -32,6 +34,21 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
 		//TODO save
 		Message message = new Message(0, text, 123, true);
 
+		// Store to db
 		getMvpView().showMessage(message);
+
+		createResponse(text);
+	}
+
+	private void createResponse(String text) {
+		Message response;
+		if (text.toLowerCase().contains(FILTER_BILL)) {
+			response = new Bill(3, "3foozzz", 102, "323352 325234 32523 32", 32.15, 165.52, "02/26/16", 400.33);
+		} else {
+			response = new Message(3, text, 103, false);
+		}
+
+		// Store to db
+		getMvpView().showMessageWithDelay(response);
 	}
 }

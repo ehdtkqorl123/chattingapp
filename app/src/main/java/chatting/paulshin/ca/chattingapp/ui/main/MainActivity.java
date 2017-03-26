@@ -23,6 +23,8 @@ import chatting.paulshin.ca.chattingapp.data.model.Message;
 
 public class MainActivity extends AppCompatActivity implements MainMvpView {
 
+	private static final int RESPONSE_DELAY = 1500;
+
 	private ChattingAdapter mChattingAdapter;
 	private MainPresenter mMainPresenter;
 
@@ -62,15 +64,28 @@ public class MainActivity extends AppCompatActivity implements MainMvpView {
 		if (!TextUtils.isEmpty(text)) {
 			mMessageView.setText("");
 			mMainPresenter.sendMessage(text);
-			mRecyclerView.scrollToPosition(0);
 		}
 	}
 
 	@Override
 	public void showMessage(Message message) {
 		mChattingAdapter.addMessage(message);
+		mRecyclerView.scrollToPosition(0);
 		mRecyclerView.setVisibility(View.VISIBLE);
 		mEmptyTextView.setVisibility(View.GONE);
+	}
+
+	@Override
+	public void showMessageWithDelay(final Message message) {
+		mRecyclerView.postDelayed(new Runnable() {
+			@Override
+			public void run() {
+				mChattingAdapter.addMessage(message);
+				mRecyclerView.scrollToPosition(0);
+				mRecyclerView.setVisibility(View.VISIBLE);
+				mEmptyTextView.setVisibility(View.GONE);
+			}
+		}, RESPONSE_DELAY);
 	}
 
 	@Override

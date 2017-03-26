@@ -11,6 +11,7 @@ import chatting.paulshin.ca.chattingapp.ui.base.MvpView;
 
 public interface MainMvpView extends MvpView {
 	void showMessage(Message message);
+	void showMessageWithDelay(Message message);
 	void showMessages(List<Message> messages);
 	void showEmptyMessages();
 	void showError();
