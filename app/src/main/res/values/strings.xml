@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ChattingApp</string>
 
-    <string name="main_title">CHAT WITH US</string>
+    <string name="main_title">Chat with us</string>
     <string name="bill_message">Here is your current statement:</string>
     <string name="empty_list_message">Start conversation!</string>
     <string name="error_message">Oops, something went wrong :(</string>

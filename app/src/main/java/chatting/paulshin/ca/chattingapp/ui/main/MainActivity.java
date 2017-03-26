@@ -18,6 +18,9 @@ import butterknife.OnClick;
 import chatting.paulshin.ca.chattingapp.R;
 import chatting.paulshin.ca.chattingapp.data.model.Message;
 
+/**
+ * Created by paulshin on 2017-03-25.
+ */
 public class MainActivity extends AppCompatActivity implements MainMvpView {
 
 	private static final int RESPONSE_DELAY = 1000;
