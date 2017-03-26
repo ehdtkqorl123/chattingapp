@@ -1,28 +1,30 @@
 package chatting.paulshin.ca.chattingapp.data.model;
 
+import com.orm.SugarRecord;
+
 /**
  * Created by paulshin on 2017-03-25.
  */
 
-public class Message {
-	private int id;
+public class Message extends SugarRecord {
+	private int messageId;
 	private String text;
 	private long timestamp;
 	private boolean isMe;
 
-	public Message(int id, String text, long timestamp, boolean isMe) {
-		this.id = id;
+	public Message(int messageId, String text, long timestamp, boolean isMe) {
+		this.messageId = messageId;
 		this.text = text;
 		this.timestamp = timestamp;
 		this.isMe = isMe;
 	}
 
-	public int getId() {
-		return id;
+	public int getMessageId() {
+		return messageId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setMessageId(int messageId) {
+		this.messageId = messageId;
 	}
 
 	public String getText() {

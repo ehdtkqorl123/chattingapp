@@ -25,8 +25,8 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
 	public void loadMessages() {
 		getMvpView().showMessages(new ArrayList(Arrays.asList(
 				new Message(0, "1ttestest", 100, true),
-				new Message(1, "2gggdsagsafasdf", 101, false),
-				new Bill(2, "3foozzz", 102, "323352 325234 32523 32", 32.15, 165.52, "02/26/16", 400.33)
+				new Message(1, "2gggdsagsafasdf", 101, false)
+//				new Bill(2, "3foozzz", 102, "323352 325234 32523 32", 32.15, 165.52, "02/26/16", 400.33)
 		)));
 	}
 
@@ -48,7 +48,7 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
 			response = new Message(3, text, 103, false);
 		}
 
-		// Store to db
-		getMvpView().showMessageWithDelay(response);
+		// TODO: Store to db
+		getMvpView().showResponseWithDelay(response);
 	}
 }

@@ -11,8 +11,8 @@ public class Bill extends Message {
 	private String dueDate;
 	private double totalDue;
 
-	public Bill(int id, String text, long timestamp, String accountNo, double productPrice, double fees, String dueDate, double totalDue) {
-		super(id, text, timestamp, false);
+	public Bill(int messageId, String text, long timestamp, String accountNo, double productPrice, double fees, String dueDate, double totalDue) {
+		super(messageId, text, timestamp, false);
 		this.accountNo = accountNo;
 		this.productPrice = productPrice;
 		this.fees = fees;

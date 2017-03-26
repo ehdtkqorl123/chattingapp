@@ -8,6 +8,12 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="DATABASE" android:value="history.db" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="chatting.paulshin.ca.chattingapp.data.model" />
+
         <activity android:name=".ui.main.MainActivity"
                   android:windowSoftInputMode="adjustResize">
             <intent-filter>
